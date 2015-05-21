@@ -1,0 +1,10 @@
+matplotlib
+pandas
+biopython
+pprint
+
+[dev]
+check-manifest
+
+[test]
+coverage
