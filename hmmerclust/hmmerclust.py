@@ -474,7 +474,7 @@ class HmmSearch:
     def __init__(self, OrganismDB, combined_fasta, freshbuild=True, freshsearch=True, ):
         
         self.alignment_dir = './alignments/'
-        self.alignment_list = [x for x in os.listdir(self.alignment_dir) if '.fasta' in x]
+        self.alignment_list = [x for x in os.listdir(self.alignment_dir) if '.txt' in x]
         self.query_names = []
 
         self.hmm_dir = './hmm/'

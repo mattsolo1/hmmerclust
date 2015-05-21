@@ -1,0 +1,348 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b1 (May 2013); http://hmmer.org/
+# Copyright (C) 2013 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  ./hmm/SipB.hmm
+# target sequence database:        ./combined_fasta
+# number of worker threads:        8
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       SipB_PF04888_seed  [M=306]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence              Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------              -----------
+    3.7e-40  139.4  53.1    3.7e-40  139.4  53.1    2.0  1  NC_000117,NP_220094.1  
+      9e-30  105.3  66.1      9e-30  105.3  66.1    2.5  1  NC_000922,NP_225004.1  
+    1.7e-27   97.8  58.1    1.7e-27   97.8  58.1    2.1  2  NC_000922,NP_225003.1  
+    1.5e-18   68.4  62.5    1.5e-18   68.4  62.5    2.7  1  NC_000117,NP_220093.1  
+     0.0013   19.4   1.6     0.0018   18.9   1.6    1.1  1  NC_000964,NP_389392.1  
+  ------ inclusion threshold ------
+      0.015   15.9   8.5      0.027   15.0   8.5    1.3  1  NC_000962,NP_217359.1  
+      0.017   15.7   0.1      0.017   15.7   0.1    2.5  3  NC_000922,NP_225214.1  
+      0.045   14.3   1.3      0.074   13.6   1.3    1.4  1  NC_000912,NP_109826.1  
+      0.092   13.3   0.1       0.11   13.1   0.1    1.1  1  NC_000868,NP_126095.1  
+       0.45   11.0   0.0       0.45   11.0   0.0    3.7  5  NC_000853,NP_228347.1  
+        1.3    9.5   3.9        2.5    8.6   3.9    1.4  1  NC_000964,NP_391642.1  
+        2.4    8.6   7.1          3    8.3   6.5    1.4  1  NC_000964,NP_389162.1  
+        6.2    7.3   5.4         72    3.8   2.5    2.6  2  NC_000961,NP_877869.1  
+        6.6    7.2   6.4        8.3    6.9   6.4    1.1  1  NC_000854,YP_874938.1  
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_000117,NP_220094.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  139.4  53.1   1.4e-43   3.7e-40       1     306 []     141     437 ..     141     437 .. 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 139.4 bits;  conditional E-value: 1.4e-43
+      SipB_PF04888_seed   1 llaelaeLtskaaekqaesklaqleiasekqekkveeyqeqiekaieka...ekakks.Gifskifgwigaavsviagalailaatgv 84 
+                            l+ ++++L+++a++k+++s+++q+++a ++q +++ e+ ++i+++++++   ++++++ +++s i +++g+avsv++g+  + a++  
+  NC_000117,NP_220094.1 141 LMGLIMTLLAQASAKSWSSSFQQQNQAIQNQVAMAPEIGNAIRTQANHQaqaTELQAQqSLISGITNIVGFAVSVGGGI--LSASKSL 226
+                            7999*****************************************999888899*************************..******* PP
+
+      SipB_PF04888_seed  85 GlaaGalmiaagvagavgaaaeaaadlagkiskgietaalaalgvsaskaakaagsiakavatvvavlagaaasgvaaavkkaagk.v 171
+                            G+      +++  a+ ++ +a+a  +++++++k +++a+ +++g++++ +aka+ ++a+a+ +++++l++++a+++++  ++ a+k +
+  NC_000117,NP_220094.1 227 GG------LKS--AAFTNETASATTSATSSLAKTATSALDDVAGTATAVGAKATSGAASAASSAATKLTQNMAESASKTLSQTASKsA 306
+                            *8......777..889999999999*************************************************************** PP
+
+      SipB_PF04888_seed 172 gsalakqvakqvakalgkallnaaaqggaklasiakkatssvakavemavvaaavtasvaq...ggtgvaaavlqkeakkleadlall 256
+                            g  ++++++++ +++ +++++n+++++g+++a++a++a+s    a++++++++ +ta++++   g++g+++a++q++a+++ea +++ 
+  NC_000117,NP_220094.1 307 GGLFGQALNTPSWSEKVSRGMNVVKTQGTRAAKFAGRALS---SAMNISQMVHGLTAGIDGivgGVIGAQVAQEQRMAGMAEARAEE- 390
+                            ****************************************...99******************************************. PP
+
+      SipB_PF04888_seed 257 raeleqlqqiikqlkekikelleqlqqalksilqaiqqsgdtqaqiarsa 306
+                               l++l++++ q++ ++++l+eq+qq+++s+lq++q+  d + q+++s+
+  NC_000117,NP_220094.1 391 ---LKSLNSVQAQYASQAQQLQEQSQQSFNSALQTLQSISDSALQTTASM 437
+                            ...**************************************999999886 PP
+
+>> NC_000922,NP_225004.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  105.3  66.1   3.5e-33     9e-30      13     304 ..     203     486 ..     195     488 .. 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 105.3 bits;  conditional E-value: 3.5e-33
+      SipB_PF04888_seed  13 aekqaesklaqleiasekqe....kkveeyqeqiekaiekaekakks.GifskifgwigaavsviagalailaatgvGlaaGalmiaa 95 
+                            +  +++ +++q +++  +++     k  e+ +++++a++k ++++ + + +++++ ++++a++vi+ + a+++++g+Gl  + l+++a
+  NC_000922,NP_225004.1 203 NYASTQAQADQTNKLGLEKQaikiDKEREEYQEMKAAEQKSKDLEGTmDTVNTVMIAVSVAITVISIV-AAIFTCGAGL--AGLAAGA 287
+                            567889999999999999999999999999999********************************999.*********9..3333344 PP
+
+      SipB_PF04888_seed  96 gv.agavgaaaeaaadlagkiskgietaalaalgvsaskaakaagsiakavatvvavla.....gaaasgvaaavkkaagkvgsalak 177
+                            +v a+a+g aa+aaa  a+ ++++i+++a+++++              +av+t+v +++     +a++sg++a +k++ +++++a++k
+  NC_000922,NP_225004.1 288 AVgAAAAGGAAGAAA--ATTVATQITVQAVVQAVK-------------QAVITAVRQAItaaikAAVKSGIKAFIKTLVKAIAKAISK 360
+                            445777788888855..9999**998888887744.............6666666666553333446777777777777777777777 PP
+
+      SipB_PF04888_seed 178 qvakqvakalgkallnaaaqggaklasiakkatssv.akavemavvaaavtasvaq...ggtgvaaavlqkeakkleadlallraele 261
+                             + k     +++++++++a+++ kl+++++++ts++ +  v ++v+a a++++++q   +++++++a++qke++kl+a++++  ++++
+  NC_000922,NP_225004.1 361 GISK-----VFAKGTQMIAKNFPKLSKVISSLTSKWvTVGVGVVVAAPALGKGIMQmqlSEMQQNVAQFQKEVGKLQAAADMISMFTQ 443
+                            7555.....8899***********************9456999********************************************* PP
+
+      SipB_PF04888_seed 262 qlqqiikqlkekikelleqlqqalksilqaiqqsgdtqaqiar 304
+                            ++qq+ k ++++++e +e++q+a+k ++q+++++++++ +ia+
+  NC_000922,NP_225004.1 444 FWQQASKIASKQTGESNEMTQKATKLGAQILKAYAAISGAIAG 486
+                            ****************************************996 PP
+
+>> NC_000922,NP_225003.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.7   8.8       5.3   1.4e+04     208     287 ..      18     101 ..       3     114 .. 0.46
+   2 !   97.8  58.1   6.4e-31   1.7e-27       1     305 [.     144     441 ..     144     442 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: -3.7 bits;  conditional E-value: 5.3
+      SipB_PF04888_seed 208 katssvakavemavvaaavtasvaq.ggtgvaaavlqkeakkleadlallrae....leqlqqiikqlkekikelleqlqqalks 287
+                            ++++s  +++ +a+++++ ++ ++q + ++vaa+ +   ++++ a  + ++ +    +++ +  +++++ k k+  ++++++ ++
+  NC_000922,NP_225003.1  18 QLAQSS-QKAGNAQSGHDTKNVTKQgAQAEVAAGGFEDLIQDASAQSTGKKEAtsstTKSSKGEKSEKSGKSKSSTSVASASETA 101
+                            222222.445555555555555555434455555555444444443332222112223333333333334444444444444444 PP
+
+  == domain 2  score: 97.8 bits;  conditional E-value: 6.4e-31
+      SipB_PF04888_seed   1 llaelaeLtskaaekqaesklaqleiasekqekkveeyqeqiekaieka...ekakks.Gifskifgwigaavsviagalailaatgv 84 
+                            ll ++++L+++aa+++++ +++++++a   q + +  + e+i+ +++++   ++a+++ +++s i++++g+ vsv+ag+    aa+g+
+  NC_000922,NP_225003.1 144 LLGLVMTLMANAAGESWKASFQSQNQAIRSQVESAPAIGEAIKRQANHQasaTEAQAKqSLISGIVNIVGFTVSVGAGI--FSAAKGA 229
+                            577899*****************************************99999***************************..6666666 PP
+
+      SipB_PF04888_seed  85 GlaaGalmiaagv.agavgaaaeaaadlagkiskgietaalaalgvsaskaakaagsiakavatvvavlagaaasgvaaavkkaagk. 170
+                                 al  a+ + +++++aa +aa+ ++++ s+++    ++ + + a++a  aa s+ +a+ +++a l++ +a++++++++  a+k 
+  NC_000922,NP_225003.1 230 TS---ALKSASFAkETGASAAGGAASKALTSASSSV----QQTMASTAKAATTAASSAGSAATKAAANLTDDMAAAASKMASDGASKa 310
+                            64...8888888866666666666555666666666....666666688899999***************999999999999999999 PP
+
+      SipB_PF04888_seed 171 vgsalakqvakqvakalgkallnaaaqggaklasiakkatssvakavemavvaaavtasvaq...ggtgvaaavlqkeakkleadlal 255
+                             g  +++ ++k+ +++ +++++n+++++ga++as+a++a+s    +++m++  + +ta+v++   g tg+++a++q+ a+++ea +++
+  NC_000922,NP_225003.1 311 SGGLFGEVLNKPNWSEKVSRGMNVVKTQGARVASFAGNALS---SSMQMSQLMHGLTAAVEGlsaGQTGIEVAHHQRLAGQAEAQAEV 395
+                            *****************************************...99****************************************** PP
+
+      SipB_PF04888_seed 256 lraeleqlqqiikqlkekikelleqlqqalksilqaiqqsgdtqaqiars 305
+                                l+q +++  q++ ++++l+eq+ q+++ +lq++q+ +d q q++++
+  NC_000922,NP_225003.1 396 ----LKQMSSVYGQQAGQAGQLQEQAMQSFNTALQTLQNIADSQTQTTSA 441
+                            ....9*****************************************9986 PP
+
+>> NC_000117,NP_220093.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   68.4  62.5   5.9e-22   1.5e-18      15     304 ..     202     485 ..     194     487 .] 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 68.4 bits;  conditional E-value: 5.9e-22
+      SipB_PF04888_seed  15 kqaesklaqleiasekqe.kkveeyqeqiekaiekaeka..kks.GifskifgwigaavsviagalailaatgvGlaaGalmiaagva 98 
+                            ++++s++a+++++s +++  k+++++e+++k++e ++k   +++ + ++k++  +++a++vi+ +  +l+++g Gl++ a++ a ++a
+  NC_000117,NP_220093.1 202 QSTQSQSANMNKMSLESQgLKIDKEREEFKKMQEIQQKSgtNSTmDTVNKVMIGVTVAITVISVV-SALFTCGLGLIGTAAAGATAAA 288
+                            799*******************************9965422555555*************99988.9*********777777777776 PP
+
+      SipB_PF04888_seed  99 gavgaaaeaaadlagkiskgietaalaalgvsaskaakaagsiakavatvvavlagaaasgvaaavkkaagkvgsalakqvakqvaka 186
+                            +++ aaa +a ++a+ ++++++++a+++++      + ++ ++++a++ ++++++   ++g+++a+k+a ++++++lak+v+k     
+  NC_000117,NP_220093.1 289 AGATAAATTATSVATTVATQVTMQAVVQVVK-----QAIIQAVKQAIVQAIKQGI---KQGIKQAIKQAVKAAVKTLAKNVGK----- 363
+                            6667777777889999999999999998866.....5566666666666666655...9999999999999999999999777..... PP
+
+      SipB_PF04888_seed 187 lgkallnaaaqggaklasiakkatssv...akavemavvaaavtasvaq...ggtgvaaavlqkeakkleadlallraeleqlqqiik 268
+                            +++a++na+++ + kl++++  + s++   +  v + +++ +++ ++++   + ++++ a+ qke++ l a  ++++a++ ++qq+ k
+  NC_000117,NP_220093.1 364 IFSAGKNAVSKSFPKLSKVINTLGSKWvtlG--VGALTAVPQLVSGITSlqlSDMQKELAQIQKEVGALTAQSEMMKAFTLFWQQASK 449
+                            9999**********************99554..8888889999999999999************************************ PP
+
+      SipB_PF04888_seed 269 qlkekikelleqlqqalksilqaiqqsgdtqaqiar 304
+                             +++++++  e++qqa k ++q+ ++  +++ ++a+
+  NC_000117,NP_220093.1 450 IAAKQTESPSETQQQAAKTGAQIAKALSAISGALAA 485
+                            **********************99988887777776 PP
+
+>> NC_000964,NP_389392.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   18.9   1.6   6.9e-07    0.0018     147     288 ..      45     178 ..      29     182 .. 0.77
+
+  Alignments for each domain:
+  == domain 1  score: 18.9 bits;  conditional E-value: 6.9e-07
+      SipB_PF04888_seed 147 tvvavla..gaaasgvaaavkkaagkvgsalakqvakqvakalgkallnaaaqggaklasiakkatssvakavema.vvaaavtasva 231
+                            t++a+++   + +   ++ + ++a+k  ++l+kq++   +  ++ ++++      a ++s +k+ +s     ++ + +   +++    
+  NC_000964,NP_389392.1  45 TAAACGFrwNSYVRKQYQSGIELAKKQRKELRKQIGVHSVN-MPNSMKQT-----ASASSEGKRDLS-----IQDViQFLEQFK---- 117
+                            56666667788888888999999999999999999998887.55555544.....445555666666.....232202333344.... PP
+
+      SipB_PF04888_seed 232 q....ggtgvaaavlqkeakkleadlallraeleqlqqiikqlkekikelleqlqqalksi 288
+                                  + ++++ +l++++++l+ +l++lr+e + l++++++  e+ k l++ ++ a k+ 
+  NC_000964,NP_389392.1 118 EtpsaQEFQLEREKLKEQIQSLQKELEDLRSENQTLRNQLEMTEEDYKALIDIMDRARKMV 178
+                            24445***********************************************999998886 PP
+
+>> NC_000962,NP_217359.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   15.0   8.5     1e-05     0.027      87     176 ..      23     111 ..      19     119 .. 0.76
+
+  Alignments for each domain:
+  == domain 1  score: 15.0 bits;  conditional E-value: 1e-05
+      SipB_PF04888_seed  87 aaGalmiaagvagavgaaaeaaadlagkiskgietaalaalgvsaskaakaagsiakavatvvavla...gaaasgvaaavkkaagkv 171
+                            a+Ga+++a gv++a g +a + a++++++ + +  a  +++    ++aa  a++i+  va++++v+a   ++ a + a+ +++aagk+
+  NC_000962,NP_217359.1  23 AGGAALAALGVVSACGESAPK-APAVEELRSPLDQARHDGA---LAAAAATAIGIPPQVAAALTVVAtqrTSHARALATEIARAAGKL 106
+                            789******************.7789999888855555555...45788889999999*********666666666666666666666 PP
+
+      SipB_PF04888_seed 172 gsala 176
+                            +sa +
+  NC_000962,NP_217359.1 107 VSATS 111
+                            66544 PP
+
+>> NC_000922,NP_225214.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.1   2.5       3.4   8.9e+03      14      48 ..     172     206 ..     167     216 .. 0.71
+   2 ?   15.7   0.1   6.5e-06     0.017      32      84 ..     292     346 ..     283     358 .. 0.82
+   3 ?   -1.7   0.1       1.3   3.3e+03     243     293 ..     445     495 ..     422     500 .. 0.72
+
+  Alignments for each domain:
+  == domain 1  score: -3.1 bits;  conditional E-value: 3.4
+      SipB_PF04888_seed  14 ekqaesklaqleiasekqekkveeyqeqiekaiek 48 
+                             ++++s++++l + + +++ ++  +q+  ek ie+
+  NC_000922,NP_225214.1 172 SQSLDSEQQELLQSRREERSETYANQQSSEKKIET 206
+                            56777777777666666667888888888888875 PP
+
+  == domain 2  score: 15.7 bits;  conditional E-value: 6.5e-06
+      SipB_PF04888_seed  32 e..kkveeyqeqiekaiekaekakks.Gifskifgwigaavsviagalailaatgv 84 
+                            e  + +e+  e+i+ +iek+ k ++  G +s i+gw+   vs+++g++ail + g+
+  NC_000922,NP_225214.1 292 EldALHEKRIETIKVSIEKE-KRERLwGSLSDIIGWLAPFVSIGIGIVAILSGGGI 346
+                            4456689999*********9.888888********************988888765 PP
+
+  == domain 3  score: -1.7 bits;  conditional E-value: 1.3
+      SipB_PF04888_seed 243 qkeakkleadlallraeleqlqqiikqlkekikelleqlqqalksilqaiq 293
+                            q+e+ kl+ +l+  + ++e  +   +   e  +ell+++ +++++ +++++
+  NC_000922,NP_225214.1 445 QAEIYKLKGKLTKIQLDIELKSFDRDDHYERSQELLDNMESSFEALSRILN 495
+                            555555666666666666655555666677778888888888888888776 PP
+
+>> NC_000912,NP_109826.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   13.6   1.3   2.8e-05     0.074     235     295 ..      88     148 ..      62     157 .. 0.86
+
+  Alignments for each domain:
+  == domain 1  score: 13.6 bits;  conditional E-value: 2.8e-05
+      SipB_PF04888_seed 235 tgvaaavlqkeakkleadlallraeleqlqqiikqlkekikelleqlqqalksilqaiqqs 295
+                            ++v++ +l ++++klea+++ l+   ++l++  ++l ek+ +l ++ ++ +++ ++++ + 
+  NC_000912,NP_109826.1  88 LEVKVDKLEEKVDKLEAKVDKLEEKVDKLEAKVDKLEEKVDKLEAKVDSGFEMLAKILAAI 148
+                            5788899999999999999999999999999999999999999999999999999888765 PP
+
+>> NC_000868,NP_126095.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   13.1   0.1   4.2e-05      0.11       3      47 ..      29      73 ..      27      76 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: 13.1 bits;  conditional E-value: 4.2e-05
+      SipB_PF04888_seed  3 aelaeLtskaaekqaesklaqleiasekqekkveeyqeqiekaie 47
+                            +l+eL++k  + +++  + ++  +se++ k+ +++ +++e++i+
+  NC_000868,NP_126095.1 29 ELLRELIGKKKKGNLDILMIAFGTMSEEEVKEFKKKIKEVEEWIN 73
+                           5799***************************************98 PP
+
+>> NC_000853,NP_228347.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.1   0.2       3.6   9.3e+03     252     274 ..     132     154 ..     129     165 .. 0.57
+   2 ?   -2.2   0.4       1.8   4.8e+03     249     287 ..     241     279 ..     205     282 .. 0.66
+   3 ?   11.0   0.0   0.00017      0.45       4      84 ..     291     388 ..     288     393 .. 0.72
+   4 ?   -1.2   1.3      0.91   2.4e+03      11      44 ..     488     521 ..     479     532 .. 0.67
+   5 ?   -0.5   1.5      0.57   1.5e+03     236     280 ..     544     589 ..     523     591 .. 0.71
+
+  Alignments for each domain:
+  == domain 1  score: -3.1 bits;  conditional E-value: 3.6
+      SipB_PF04888_seed 252 dlallraeleqlqqiikqlkeki 274
+                            d+ +l++ +++l++ i++lke +
+  NC_000853,NP_228347.1 132 DFSVLMKKTKELEAEISNLKERV 154
+                            45555555566666666555544 PP
+
+  == domain 2  score: -2.2 bits;  conditional E-value: 1.8
+      SipB_PF04888_seed 249 leadlallraeleqlqqiikqlkekikelleqlqqalks 287
+                            l  +l+ lr   e+l+  i++l ek k++ e l+ ++k+
+  NC_000853,NP_228347.1 241 LAQKLDYLRERGEELKREIESLEEKSKDTEERLKTIMKD 279
+                            444455555555666666666666666666666666655 PP
+
+  == domain 3  score: 11.0 bits;  conditional E-value: 0.00017
+      SipB_PF04888_seed   4 elaeLtskaaekqaesklaqleiasekqe..kkveeyqeqiekaieka.ekakks.Gi..fskifgwigaavsviagal......... 76 
+                            +l ++ ++ +  ++e k++ +ei+ + +e  ++++e+ e+i++ ie+  + +k+      +  +f ++   ++ ++ ++         
+  NC_000853,NP_228347.1 291 KLENMKLQIELVENEQKAKLNEIIGHLREplREIDEKLEEIQAKIENTgDHMKRFdKTlsIFRVFVAVFLTFALVSIIFaflkpgylf 378
+                            55556666666778889999999999999**888888888888888887666666555567789999999999999998888888866 PP
+
+      SipB_PF04888_seed  77 ..ailaatgv 84 
+                                la+tg+
+  NC_000853,NP_228347.1 379 fyLTLAGTGA 388
+                            4444444443 PP
+
+  == domain 4  score: -1.2 bits;  conditional E-value: 0.91
+      SipB_PF04888_seed  11 kaaekqaesklaqleiasekqekkveeyqeqiek 44 
+                            ++ e +++ k+++le+++e ++++ e  ++++++
+  NC_000853,NP_228347.1 488 SSVEASLSDKKKNLEELQEYSREQEEVLKNTLKE 521
+                            4556677777777777777777665555555555 PP
+
+  == domain 5  score: -0.5 bits;  conditional E-value: 0.57
+      SipB_PF04888_seed 236 gvaaavlqkeakkleadlallrae.leqlqqiikqlkekikelleq 280
+                            ++ +  l ke+++l+ + ++ +++ +    + +k+++e+i+++le+
+  NC_000853,NP_228347.1 544 RKTRDSLEKEIANLMKEKEEIESSrSNARIEELKREVEQIESELEK 589
+                            5566677777777777777777776555556666677777766665 PP
+
+>> NC_000964,NP_391642.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    8.6   3.9   0.00094       2.5     233     286 ..     178     231 ..     150     234 .. 0.82
+
+  Alignments for each domain:
+  == domain 1  score: 8.6 bits;  conditional E-value: 0.00094
+      SipB_PF04888_seed 233 ggtgvaaavlqkeakkleadlallraeleqlqqiikqlkekikelleqlqqalk 286
+                            +++++++  l+ke ++l++++++l+ae ++l++ +k  +e+ + l++ ++ a k
+  NC_000964,NP_391642.1 178 SALKMENERLKKENQELQNKTEQLEAEVQKLEKDQKTIQEDYETLVKIMNRARK 231
+                            788999999999999999999999999999999999999988888877777655 PP
+
+>> NC_000964,NP_389162.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    8.3   6.5    0.0012         3      15      79 ..      22      83 ..      14      87 .. 0.76
+
+  Alignments for each domain:
+  == domain 1  score: 8.3 bits;  conditional E-value: 0.0012
+      SipB_PF04888_seed 15 kqaesklaqleiasekqekkveeyqeqiekaiekaekakksGifskifgwigaavsv..iagalail 79
+                           k +e    +le+ s++q +++    e+++k++e+ +  k      +i g+i++avs+  i+ga+ai+
+  NC_000964,NP_389162.1 22 KALEQRVSALERVSDRQDQQIMTLNEKLNKIEENTTWIK-----RTITGAIITAVSTgiIGGAIAIM 83
+                           555666678999999999999999999999999995555.....56888888888853377887887 PP
+
+>> NC_000961,NP_877869.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.8   2.5     0.027        72     234     275 ..     143     184 ..      17     191 .. 0.66
+   2 ?    3.6   0.0     0.032        84     231     278 ..     227     277 ..     196     282 .. 0.77
+
+  Alignments for each domain:
+  == domain 1  score: 3.8 bits;  conditional E-value: 0.027
+      SipB_PF04888_seed 234 gtgvaaavlqkeakkleadlallraeleqlqqiikqlkekik 275
+                            ++++++ +l k+ +++e++  +l+ e++ l++  ++l +++k
+  NC_000961,NP_877869.1 143 EVEKERNELLKKLEEAESKYLELQNEIKRLEAENSRLTDTLK 184
+                            445555555555555555555555555555555555555544 PP
+
+  == domain 2  score: 3.6 bits;  conditional E-value: 0.032
+      SipB_PF04888_seed 231 aqggtgvaaavlqkeakk...leadlallraeleqlqqiikqlkekikell 278
+                            +qg + ++  +l +e  +   l ++l+++++  e++++ +++++e+i+e +
+  NC_000961,NP_877869.1 227 GQGYIYAEDEKLIEELLRtvyLSLKLTESQMKEEEIKEEKEEVIESIEEII 277
+                            55666666666666665433367899999999*************999865 PP
+
+>> NC_000854,YP_874938.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    6.9   6.4    0.0032       8.3      65     115 ..       2      76 ..       1      83 [. 0.61
+
+  Alignments for each domain:
+  == domain 1  score: 6.9 bits;  conditional E-value: 0.0032
+      SipB_PF04888_seed  65 igaavsviagal.ailaatgvGl.....................aaGalmiaagv..agavgaaaeaaadlagki 115
+                            +g ++sv++gal  il +++vG+                     +a a ++ + +  + +v  a+ a+a +ag++
+  NC_000854,YP_874938.1   2 LGNIASVGVGALlIILGLAMVGFvfytaydayrsfrvnvepaasIAEAITVNSSIliDMLVRVAFLAIALAAGSV 76 
+                            799*********9**********5554444444444444444444444444444444444444444444444443 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (306 nodes)
+Target sequences:                        36669  (11377724 residues searched)
+Passed MSV filter:                      5125  (0.139764); expected 733.4 (0.02)
+Passed bias filter:                     3158  (0.0861218); expected 733.4 (0.02)
+Passed Vit filter:                       619  (0.0168807); expected 36.7 (0.001)
+Passed Fwd filter:                        86  (0.00234531); expected 0.4 (1e-05)
+Initial search space (Z):              36669  [actual number of targets]
+Domain search space  (domZ):              14  [number of targets reported over threshold]
+# CPU time: 1.57u 0.04s 00:00:01.61 Elapsed: 00:00:00.26
+# Mc/sec: 13390.71
+//
+[ok]

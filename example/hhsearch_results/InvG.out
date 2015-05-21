@@ -1,0 +1,287 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b1 (May 2013); http://hmmer.org/
+# Copyright (C) 2013 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  ./hmm/InvG.hmm
+# target sequence database:        ./combined_fasta
+# number of worker threads:        8
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       InvG_PF00263_seed  [M=165]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence              Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------              -----------
+      3e-47  161.3   2.5      3e-47  161.3   2.5    1.6  2  NC_000907,NP_438596.1  
+    1.8e-45  155.5   1.0    4.7e-45  154.1   1.0    1.7  1  NC_000918,NP_213884.1  
+    1.1e-41  143.2   2.0    1.1e-41  143.2   2.0    1.8  2  NC_000853,NP_227904.1  
+    8.8e-40  137.0   5.7    1.9e-39  135.9   5.7    1.6  1  NC_000117,NP_220193.1  
+    3.9e-39  134.9   5.8    3.9e-39  134.9   5.8    2.1  2  NC_000922,NP_224898.1  
+    5.6e-37  127.9   2.1    9.8e-37  127.1   2.1    1.4  1  NC_000918,NP_213410.1  
+    6.8e-37  127.6   6.0    1.8e-36  126.2   6.0    1.8  1  NC_000911,NP_441598.1  
+      2e-36  126.1   0.1    3.4e-36  125.4   0.1    1.4  1  NC_000922,NP_225010.1  
+      1e-35  123.8   0.2    1.6e-35  123.1   0.2    1.3  1  NC_000117,NP_220087.1  
+    1.8e-35  123.0   0.4    3.1e-35  122.2   0.4    1.4  1  NC_000853,NP_228923.1  
+    2.3e-27   96.6   1.8    2.3e-27   96.6   1.8    2.5  1  NC_001263,NP_294498.1  
+  ------ inclusion threshold ------
+      0.015   15.9   0.0      0.059   14.0   0.0    1.9  2  NC_000964,NP_391035.1  
+       0.13   12.9   0.0       0.29   11.8   0.0    1.6  1  NC_000853,NP_228924.1  
+
+
+Domain annotation for each sequence (and alignments):
+>> NC_000907,NP_438596.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -2.8   0.0       2.9   8.3e+03      48      78 ..     226     256 ..     213     259 .. 0.71
+   2 !  161.3   2.5   1.1e-50     3e-47       1     165 []     269     429 ..     269     429 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: -2.8 bits;  conditional E-value: 2.9
+      InvG_PF00263_seed  48 ttttvefkdvgisLdvtPqvtadgritLein 78 
+                            t++++e++   +++++  + t+ g+i L++ 
+  NC_000907,NP_438596.1 226 TGNSFENIADNLNVNFATTTTPAGSIALQVA 256
+                            4444666667788888889999999999985 PP
+
+  == domain 2  score: 161.3 bits;  conditional E-value: 1.1e-50
+      InvG_PF00263_seed   1 aleqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpevseiteen 88 
+                            ale++++++++++P+llt ++++Asik+g+e+p+ v+++++      +t++vef+++ + L+vtP++++d++i L++ ++++++ ++ 
+  NC_000907,NP_438596.1 269 ALERENNVEIIASPRLLTTNKKSASIKQGTEIPYIVSNTRN------DTQSVEFREAVLGLEVTPHISKDNNILLDLLVSQNSPGSRV 350
+                            89*********************************433333......33459*********************************988 PP
+
+      InvG_PF00263_seed  89 at..vgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPrivr 165
+                            a+  +++++i+k+e++t+v ++dget+vlGG++ ++ ++se+kvPlLgdiPv+++lF+++s++++k+el+if+tP+i++
+  NC_000907,NP_438596.1 351 AYgqNEVVSIDKQEINTQVFAKDGETIVLGGVFHDTITKSEDKVPLLGDIPVIKRLFSKESERHQKRELVIFVTPHILK 429
+                            8799*************************************************************************85 PP
+
+>> NC_000918,NP_213884.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  154.1   1.0   1.7e-48   4.7e-45       2     164 ..     416     581 ..     415     582 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: 154.1 bits;  conditional E-value: 1.7e-48
+      InvG_PF00263_seed   2 leqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegsttttt..vefkdvgisLdvtPqvtadgritLeinpevseitee 87 
+                            leq +  +v+s+P++ltl+n+eA ikvgq vp+p    tg +++++++    +++kdvg++L++tP++t +++++L i+ + +eit++
+  NC_000918,NP_213884.1 416 LEQGTGFNVVSNPKILTLDNQEALIKVGQVVPFP----TGIKYDVNGNPIitYDYKDVGLELKITPRIT-GETVRLVIELKLQEITGY 498
+                            89999*****************************....7777776666665577***************.678**************8 PP
+
+      InvG_PF00263_seed  88 nat......vgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPriv 164
+                             ++      +++p++s+re+++ v v++g t+v+GGlis+++ +s++k+P+LgdiPv+G+lFr++ ++k+kt l+if+tP+++
+  NC_000918,NP_213884.1 499 LTNevsgvnYTVPITSNRELNSDVVVENGRTVVIGGLISRKSLKSTEKIPGLGDIPVMGRLFRYDRDEKDKTSLFIFLTPYVI 581
+                            77788****************************************************************************98 PP
+
+>> NC_000853,NP_227904.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -3.1   0.1       3.7     1e+04      63      90 ..      27      55 ..      25      71 .. 0.73
+   2 !  143.2   2.0   3.8e-45   1.1e-41       5     165 .]    1132    1284 ..    1129    1284 .. 0.93
+
+  Alignments for each domain:
+  == domain 1  score: -3.1 bits;  conditional E-value: 3.7
+      InvG_PF00263_seed 63 vtPqvtadgr.itLeinpevseiteenat 90
+                           v P++++d+  i+++i+  v++++ e++ 
+  NC_000853,NP_227904.1 27 VLPKIENDRViIEIQISSPVEDVSAEMNS 55
+                           78999987776888888888888877754 PP
+
+  == domain 2  score: 143.2 bits;  conditional E-value: 3.8e-45
+      InvG_PF00263_seed    5 sgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpevseiteenat 90  
+                             ++  ++l++P+++t s++eA+i +g+++p+     t+ ++g++t  +v+f ++gi+L++tP v +d++i+L++ ++ se+ ++   
+  NC_000853,NP_227904.1 1132 NTLDDILASPRIVTTSGKEARILIGDRIPYV----TD-TNGDGT-PEVQFLETGIELSITPFVRSDDTIELDLFVKASEPGNYI-- 1209
+                             556689*************************....55.333333.349*********************************986.. PP
+
+      InvG_PF00263_seed   91 vgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPrivr 165 
+                             +++p+ ++re++t + v++g t+ +GGli+e ++ +esk P+Lgd+Pv+G++Fr+ks++kek+ l+if+t r+v+
+  NC_000853,NP_227904.1 1210 NEVPGERTREAQTHLIVKNGSTITIGGLIREVTNVTESKLPFLGDLPVIGQFFRTKSENKEKRDLVIFLTVRVVE 1284
+                             8***********************************************************************995 PP
+
+>> NC_000117,NP_220193.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  135.9   5.7   6.8e-43   1.9e-39       1     164 [.     704     865 ..     704     866 .. 0.94
+
+  Alignments for each domain:
+  == domain 1  score: 135.9 bits;  conditional E-value: 6.8e-43
+      InvG_PF00263_seed   1 aleqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpevseiteen 88 
+                            al q+g+++v+ +P++++++ ++As+ vgq++p++++s+  q++gs t +++e++d+g++L vt ++ +++ +tL+i++++se+ +++
+  NC_000117,NP_220193.1 704 ALDQDGDTTVVLNPRIMAQDTQQASFFVGQTIPFQTTSTVIQETGSVT-QNIEYEDIGVNLVVTSTIAPNNVVTLQIEQTISELHSAQ 790
+                            799********************************7777776664443.44**********************************976 PP
+
+      InvG_PF00263_seed  89 atvgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPriv 164
+                              v tp+++k+ + t+++v+dg  lv++G i+++ ++ +s+vPlL+ +P+++ lF+++ ++++k++++ifi+P+++
+  NC_000117,NP_220193.1 791 -GVLTPVTDKTFAATRLQVPDGCFLVMSGHIRDKLTKIVSGVPLLSSLPLIKGLFSRSIDQRQKRNIMIFIKPKVI 865
+                            .5************************************************************************98 PP
+
+>> NC_000922,NP_224898.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -1.0   0.2      0.85   2.4e+03      72      91 ..     179     215 ..     173     239 .. 0.59
+   2 !  134.9   5.8   1.4e-42   3.9e-39       1     164 [.     702     863 ..     702     864 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: -1.0 bits;  conditional E-value: 0.85
+      InvG_PF00263_seed  72 ritLeinpevseiteenat.................v 91 
+                             i+L+i+ + +e t++ +                  v
+  NC_000922,NP_224898.1 179 AINLSIKKQLEEQTSTVTEkdvqpktqatphaskknV 215
+                            5777777777777775544656677744444444441 PP
+
+  == domain 2  score: 134.9 bits;  conditional E-value: 1.4e-42
+      InvG_PF00263_seed   1 aleqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpevseiteen 88 
+                            al q+g++ ++ +P++++++ ++As+ vgq+vp++++++  q++ +t t++++++d+g++L vt +v +++ +tL+i++++se+ +++
+  NC_000922,NP_224898.1 702 ALDQDGDTVIVLNPRIMAQDTQQASFFVGQTVPYQTTNTIIQET-GTVTQNIDYEDIGVNLVVTSTVAPNNVVTLQIEQTISELHSAS 788
+                            799********************************444444333.333444*********************************9865 PP
+
+      InvG_PF00263_seed  89 atvgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPriv 164
+                                tp+++k+ + t+++++dg  lv++G i++++++++s+vPlL+ iP+++ lF+++ ++++k+++++fi+P+++
+  NC_000922,NP_224898.1 789 -GSLTPVTDKTYAATRLQIPDGCFLVMSGHIRDKTTKVVSGVPLLNSIPLIRGLFSRTIDQRQKRNIMMFIKPKVI 863
+                            .6************************************************************************98 PP
+
+>> NC_000918,NP_213410.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  127.1   2.1   3.5e-40   9.8e-37       1     165 []     536     703 ..     536     703 .. 0.95
+
+  Alignments for each domain:
+  == domain 1  score: 127.1 bits;  conditional E-value: 3.5e-40
+      InvG_PF00263_seed   1 aleqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpevseiteen 88 
+                            a eq+g+ak ++e  ++t+++e+A i++g e+pv+    + + +g+  +++ +++++ i L  tP+v +dg+i L++  +  +i++ +
+  NC_000918,NP_213410.1 536 AYEQEGRAKNVAESYVITVNGEPAVISSGLEFPVT----EVSLSGGIANVEPKYESIPIVLITTPVVLPDGNILLSVYLARRQINSVQ 619
+                            689********************************....66555556666677*********************************99 PP
+
+      InvG_PF00263_seed  89 at.......vgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPrivr 165
+                            ++       +++p++s+++++ ++ +++get+v+GG +++++s +es+vP L ++P+lG+lF++++k+ + +ellifitP+i++
+  NC_000918,NP_213410.1 620 EFpvtqtltQKIPVFSTSRIDVKIPIKNGETVVIGGAVEKSDSITESGVPKLREVPLLGWLFKTQTKQLRDRELLIFITPEIIE 703
+                            99********************************************************************************95 PP
+
+>> NC_000911,NP_441598.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  126.2   6.0   6.5e-40   1.8e-36       3     164 ..     581     752 ..     579     753 .. 0.91
+
+  Alignments for each domain:
+  == domain 1  score: 126.2 bits;  conditional E-value: 6.5e-40
+      InvG_PF00263_seed   3 eqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttve..fkdvgisLdvtP.qvtadgritLeinpevseitee 87 
+                             +sg+ak+l++P+l+++++e+A++k +++v   v+++ +++ g+t   t++   +dvg++L+v   +++++g itL++np v +++++
+  NC_000911,NP_441598.1 581 IRSGNAKILTDPTLIVQEGEAAQVKLTESVIASVDTQVDTQ-GDTAVRTITpvLEDVGLTLNVIVdRIDDNGFITLRVNPIVASPAGT 667
+                            5799*****************************77766644.4455555666799********9945555*****************9 PP
+
+      InvG_PF00263_seed  88 nat.......vgtptiskrevkt.tvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPriv 164
+                            + +       ++++ i+kre+++  vr+rd +t++l+G+ise +++++skvP+Lgd+Pv+GalFr+++++++++e++i++tP+i+
+  NC_000911,NP_441598.1 668 QVFdsgagaiNEITLINKRELTSgVVRLRDDQTFILSGIISELQRSTTSKVPILGDLPVIGALFRQSTDTTDRSEVIILMTPKII 752
+                            999******999999********9************************************************************8 PP
+
+>> NC_000922,NP_225010.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  125.4   0.1   1.2e-39   3.4e-36       2     164 ..     532     690 ..     531     691 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: 125.4 bits;  conditional E-value: 1.2e-39
+      InvG_PF00263_seed   2 leqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgr.....itLeinpevsei 84 
+                            l  ++++++ ++Ps++t+++++A+i v++e+ + v+s++++++       +++ ++gi++++ P+++ +++     itLe +++ ++ 
+  NC_000922,NP_225010.1 532 LMAQEDVRINASPSVVTMNQTPARIAVVDEMSIAVSSDKDKAQ-------YNRAQYGIMIKMLPVINVGEEdgksyITLETDITFDTT 612
+                            678999****************************666666444.......99************998755556789***********9 PP
+
+      InvG_PF00263_seed  85 teenatvgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPriv 164
+                             +++  ++ p +++r+++ +vr+ dget+++GGl  ++ s+s++++P+LgdiP +G+lF+ +s+s++ te+++fitP+i+
+  NC_000922,NP_225010.1 613 GKNH--DDRPDVTRRNITNKVRIADGETVIIGGLRCKQMSDSHDGIPFLGDIPGIGKLFGMSSTSDSLTEMFVFITPKIL 690
+                            9865..9************************************************************************8 PP
+
+>> NC_000117,NP_220087.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  123.1   0.2   5.8e-39   1.6e-35       2     165 .]     537     696 ..     536     696 .. 0.92
+
+  Alignments for each domain:
+  == domain 1  score: 123.1 bits;  conditional E-value: 5.8e-39
+      InvG_PF00263_seed   2 leqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgr.....itLeinpevsei 84 
+                            l  ++++++ ++Ps++t+++++A+i +++e+ + v+s++++++       +++ ++gi++++ P+++ +++     itLe +++ ++ 
+  NC_000117,NP_220087.1 537 LMAQEDVRINASPSVVTMNQTPARIAIVEEMSIVVSSDKDKAQ-------YNRAQYGIMIKILPVINIGEEdgksfITLETDITFDST 617
+                            678999****************************666666444.......99************998755556799************ PP
+
+      InvG_PF00263_seed  85 teenatvgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPrivr 165
+                              ++  ++ p +++r+++ +vr++dget+++GGl  +++ +s++++P+Lg++P +G+lF+ +s s+++te+++fitP+i++
+  NC_000117,NP_220087.1 618 GRNH--ADRPDVTRRNITNKVRIQDGETVIIGGLRCNQTMDSRDGIPFLGELPGIGKLFGMDSASDSQTEMFMFITPKILD 696
+                            9865..8************************************************************************85 PP
+
+>> NC_000853,NP_228923.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  122.2   0.4   1.1e-38   3.1e-35       2     163 ..     231     383 ..     230     385 .. 0.95
+
+  Alignments for each domain:
+  == domain 1  score: 122.2 bits;  conditional E-value: 1.1e-38
+      InvG_PF00263_seed   2 leqsgkakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpevseiteena 89 
+                            le+++kak+ ++P +++ s+e+As+  g++  v  + e       +  +++e +dvg+s+d++P+v+++++ +L+++p+vs +++e+ 
+  NC_000853,NP_228923.1 231 LEEDQKAKITADPWIIVKSGEKASLFLGERQVVLLQAE-------GAVSRIESIDVGVSIDIQPRVMDKEELELTLSPKVSHFAGEK- 310
+                            89********************************3333.......34556**********************************986. PP
+
+      InvG_PF00263_seed  90 tvgtptiskrevkttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPri 163
+                              gt  ++++e++tt+ +++g+t+v++G + e++ +++s+vP+L++iP++++lF+ ++k+++++el ifi+++i
+  NC_000853,NP_228923.1 311 -LGTFAVKQNELSTTLFLKNGQTVVISGATIEDSAQTSSGVPILNKIPLIRYLFGGTTKKDSQKELYIFIKAEI 383
+                            .9**********************************************************************98 PP
+
+>> NC_001263,NP_294498.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   96.6   1.8   8.1e-31   2.3e-27      18     165 .]     597     740 .]     564     740 .] 0.83
+
+  Alignments for each domain:
+  == domain 1  score: 96.6 bits;  conditional E-value: 8.1e-31
+      InvG_PF00263_seed  18 tlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLd.vtPqvtadgritLeinpevseiteenatvgtpt...iskrev 101
+                            ++s+ +As+k+g+++ ++  s +g+         v ++d+g++Ld + Pqv +dg+itL+i+ +v++++++ + ++ p+   ++++e+
+  NC_001263,NP_294498.1 597 ASSGAAASVKSGGRLEINIPSAAGN--------IVRQIDYGLNLDfFSPQVAPDGTITLRIRGQVNQPATAITADSLPNlidFTNSEA 676
+                            4566666666666666663333332........2789********779*********************9888877777667****** PP
+
+      InvG_PF00263_seed 102 kttvrvrdgetlvlGGliseekseseskvPlLgdiPvlGalFrskskskektellifitPrivr 165
+                            ++t++ ++g+t++++Gl+ +++++++s+vP+L+ +P +Ga F++k ++k++++ll++it ++v+
+  NC_001263,NP_294498.1 677 QSTITFKNGQTILMSGLLGSTETTNRSGVPFLSSLPGVGAAFGEKRTEKTQSQLLVIITGTVVK 740
+                            ************************************************************9986 PP
+
+>> NC_000964,NP_391035.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   14.0   0.0   2.1e-05     0.059     127     145 ..     134     152 ..     132     157 .. 0.89
+   2 ?   -2.2   0.0       1.9   5.5e+03     113     133 ..     295     315 ..     293     316 .. 0.89
+
+  Alignments for each domain:
+  == domain 1  score: 14.0 bits;  conditional E-value: 2.1e-05
+      InvG_PF00263_seed 127 eskvPlLgdiPvlGalFrs 145
+                            ++k+P+LgdiPvlG++F s
+  NC_000964,NP_391035.1 134 KTKIPGLGDIPVLGKIFFS 152
+                            689************9966 PP
+
+  == domain 2  score: -2.2 bits;  conditional E-value: 1.9
+      InvG_PF00263_seed 113 lvlGGliseekseseskvPlL 133
+                            l+l G+i + +  + ++vP++
+  NC_000964,NP_391035.1 295 LALTGFIGRADAPKANGVPYI 315
+                            7999***************86 PP
+
+>> NC_000853,NP_228924.1  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   11.8   0.0    0.0001      0.29       7      80 ..      82     142 ..      80     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1  score: 11.8 bits;  conditional E-value: 0.0001
+      InvG_PF00263_seed   7 kakvlsePslltlsneeAsikvgqevpvpvesetgqsegstttttvefkdvgisLdvtPqvtadgritLeinpe 80 
+                            + ++ls+P +lt+ +++A ++vg+e   +v++  +         tv+    ++ L++tPq  +++++  ei+ +
+  NC_000853,NP_228924.1  82 SYRILSKPWILTVLGKPAVVRVGREEILTVTQGMT---------TVQ----EMYLSITPQQLDKKSVLSEIEMK 142
+                            569**********************9998222222.........132....56788888888888877666655 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (165 nodes)
+Target sequences:                        36669  (11377724 residues searched)
+Passed MSV filter:                       876  (0.0238894); expected 733.4 (0.02)
+Passed bias filter:                      594  (0.016199); expected 733.4 (0.02)
+Passed Vit filter:                        55  (0.0014999); expected 36.7 (0.001)
+Passed Fwd filter:                        13  (0.000354523); expected 0.4 (1e-05)
+Initial search space (Z):              36669  [actual number of targets]
+Domain search space  (domZ):              13  [number of targets reported over threshold]
+# CPU time: 0.19u 0.01s 00:00:00.20 Elapsed: 00:00:00.07
+# Mc/sec: 26818.92
+//
+[ok]

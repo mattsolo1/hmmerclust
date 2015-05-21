@@ -1,6 +1,8 @@
 README.rst
 setup.cfg
 setup.py
+example/__init__.py
+example/settings.py
 hmmerclust/__init__.py
 hmmerclust/hmmerclust.py
 hmmerclust.egg-info/PKG-INFO
