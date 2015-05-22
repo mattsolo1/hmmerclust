@@ -57,10 +57,10 @@ $ pip install ipython[all] matplotlib pandas biopython hmmerclust$ ipython noteb
 
     ls alignments/
 
-    FlgH_PF02107_seed.txt  InvG_PF00263_seed.txt  OrgB_PB004806.txt      PrgK_PF01514_seed.txt  SpaO_PF01052_seed.txt  SpaS_PF01312_seed.txt
-    InvA_PF00771_seed.txt  InvH_PF04741_seed.txt  PrgH_PF09480_seed.txt  SipB_PF04888_seed.txt  SpaP_PF00813_seed.txt
-    InvC_PF00006_seed.txt  InvJ_PF02510_seed.txt  PrgI_PF09392_seed.txt  SipC_PF09599_seed.txt  SpaQ_PF01313_seed.txt
-    InvE_PF07201_seed.txt  OrgA_PF09482_seed.txt  PrgJ_PB000379.txt      SipD_PF06511_seed.txt  SpaR_PF01311_seed.txt
+FlgH_PF02107_seed.txt  InvG_PF00263_seed.txt  OrgB_PB004806.txt      PrgK_PF01514_seed.txt  SpaO_PF01052_seed.txt  SpaS_PF01312_seed.txt
+InvA_PF00771_seed.txt  InvH_PF04741_seed.txt  PrgH_PF09480_seed.txt  SipB_PF04888_seed.txt  SpaP_PF00813_seed.txt
+InvC_PF00006_seed.txt  InvJ_PF02510_seed.txt  PrgI_PF09392_seed.txt  SipC_PF09599_seed.txt  SpaQ_PF01313_seed.txt
+InvE_PF07201_seed.txt  OrgA_PF09482_seed.txt  PrgJ_PB000379.txt      SipD_PF06511_seed.txt  SpaR_PF01311_seed.txt
 
 
 Here are the alignment files. In this case, I queried PFAM for the proteins located in my gene cluster of interest (here, the type III secretion system). It is important to name the files starting with how you want to the search results to be annotated later, followed by an underscore. It doesn't matter what goes after the underscore.
@@ -147,7 +147,7 @@ These are all RefSeq genbank files downloaded from NCBI. In an actual search I w
 
 #Make the database
 
-
+```python
     from hmmerclust import hmmerclust
     import settings
     
@@ -158,7 +158,7 @@ These are all RefSeq genbank files downloaded from NCBI. In an actual search I w
                                geneome_list,
                                genome_dir,
                                freshfasta=True)
-
+```
 After you do this once, a fasta will be generated. If you already have the freshfasta=False, next time you make a database. The fasta can be very large; don't want to always generate this and have multiple copies on your system.
 
 ####Resultant db object structured like this:
@@ -170,14 +170,14 @@ After you do this once, a fasta will be generated. If you already have the fresh
 
 #Do the search!
 
-
+```python
     #specificy the location of the fasta 
     
     combined_fasta = './combined_fasta'
     s = hmmerclust.HmmSearch(db, combined_fasta, 
                              freshbuild=True, freshsearch=True,
                             aln_extension='.txt')
-
+```
 Specify the location of the combined fasta generated from the previous step and if the alignments files have an extension. Hits are added to the db object.
 
 ####Can see the organisms in the database model now have protein objects
