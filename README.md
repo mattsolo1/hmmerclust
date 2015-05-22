@@ -92,18 +92,21 @@ NC_002620.gb
 
 These are all RefSeq genbank files downloaded from NCBI. In an actual search I would use all the genomes from RefSeq. (~ 1500 chromosomes)
 
-# define a color dict for the proteins of interest (cdict)
-# define an order for how proteins will appear in the heatmap (hmcol)
-# if these are not defined, the will be generated automatically.
+In the settings file there are definitions for how results will be displayed later in some of the scripts.
+The `COLOUR_DICT` variable indicates how ORFs will be coloured in the locus maps. 
+The `HEATMAP_COLUMNS` variable are how proteins are ordered in the heatmap scripts. 
+the `HEATMAP_ABBREVIATIONS` variable are 1 letter codes for proteins that should reflect the same order as the columns.
+If these are not defined, the will be generated automatically.
 
 $ !cat settings.py
 
 ```
-# 
-cdict = {'InvE' : 'green', 'InvC' : 'blue'... etc}
+COLOUR_DICT = {'InvE' : 'green', 'InvC' : 'blue'... etc}
 
-hmcol = ['InvE','InvC','SpaP','SpaQ','SpaS','InvA','SpaO','OrgB','OrgA','PrgK','PrgH','InvG',
+HEATMAP_COLUMNS = ['InvE','InvC','SpaP','SpaQ','SpaS','InvA','SpaO','OrgB','OrgA','PrgK','PrgH','InvG',
         'InvH','FlgH','PrgI','PrgJ','InvJ','SipC','SipB','SipD']
+        
+HEATMAP_ABBREVIATIONS = ['E', 'C', 'P', 'Q', 'S', 'A', 'O', 'B', 'A', 'K', 'H', 'G',..etc]
 ```
 
 <hr>
