@@ -131,17 +131,45 @@ After you do this once, a fasta will be generated. If you already have the fresh
 
 <hr>
 
-#Do the search!
+#Do the search
 
 ```python
     #specificy the location of the fasta 
     
     combined_fasta = './combined_fasta'
     s = hmmerclust.HmmSearch(db, combined_fasta, 
-                             freshbuild=True, freshsearch=True,
+                             freshbuild=True,
+                             freshsearch=True,
                             aln_extension='.txt')
 ```
-Specify the location of the combined fasta generated from the previous step and if the alignments files have an extension. Hits are added to the db object.
+Specify the location of the combined fasta generated from the previous step and if the alignments files have an extension.
+
+```
+building Hmm for FlgH_PF02107_seed.txt
+building Hmm for InvA_PF00771_seed.txt
+building Hmm for InvC_PF00006_seed.txt
+building Hmm for InvE_PF07201_seed.txt
+building Hmm for InvG_PF00263_seed.txt
+etc...
+```
+A new directory hmm/ is created. These are used in the HHsearch:
+
+```
+running HHsearch on FlgH
+running HHsearch on InvA
+running HHsearch on InvC
+running HHsearch on InvE
+running HHsearch on InvG
+etc...
+
+extracted 559 hits for FlgH.out
+extracted 1000 hits for InvA.out
+extracted 14722 hits for InvC.out
+extracted 200 hits for InvE.out
+extracted 1845 hits for InvG.out
+```
+Hits are added to the organisms in the db object.
+
 
 ####Can see the organisms in the database model now have protein objects
 
