@@ -631,12 +631,16 @@ class HmmSearch:
                 if len(prot.hmm_hit_list) > 0:
                     try:
                         dd_df = prot.hit_dataframe.drop_duplicates(subset='bitscore')
-                        prot.hit_name_best = dd_df.bitscore.idxmax()
-                        prot.hit_evalue_best = dd_df.ix[prot.hit_name_best].evalue
-                        prot.hit_bitscore_best = dd_df.ix[prot.hit_name_best].bitscore
-                        prot.hit_bias_best = dd_df.ix[prot.hit_name_best].bias
-                        prot.hit_start_best = dd_df.ix[prot.hit_name_best].hsp_start
-                        prot.hit_end_best = dd_df.ix[prot.hit_name_best].hsp_end
+                        try:
+                            prot.hit_name_best = dd_df.bitscore.idxmax()
+                            prot.hit_evalue_best = dd_df.ix[prot.hit_name_best].evalue
+                            prot.hit_bitscore_best = dd_df.ix[prot.hit_name_best].bitscore
+                            prot.hit_bias_best = dd_df.ix[prot.hit_name_best].bias
+                            prot.hit_start_best = dd_df.ix[prot.hit_name_best].hsp_start
+                            prot.hit_end_best = dd_df.ix[prot.hit_name_best].hsp_end
+                        except:
+                            print 'could not set best hit values for ', org.name
+
                     except AttributeError:
                         pass
 
