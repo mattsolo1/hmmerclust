@@ -1,11 +1,11 @@
 
 #hmmerclust
-A python package for detection of gene clusters in bacterial genomes followed by interactive analysis of the results using ipython/jupyter notebook. It could be used for identifying genetic loci that encode biosynthetic pathways or multicomponent protein assemblies, comparing how these loci differ across taxonomical groups, and automatically extracting sequences for subsequent phylogenetic analysis, etc.
+A python package for detecting a gene cluster of interest in a set of bacterial genomes followed by interactive analysis of the results using ipython/jupyter notebook. For example, it could be used for identifying genetic loci that encode biosynthetic pathways or multicomponent protein assemblies, comparing how these loci differ across taxonomical groups, and automatically extracting sequences for subsequent phylogenetic analysis or protein expression.
 
 ####Requirements
 - python2.7/pip
 - virtualenv
-- hmmer installed on system
+- <a href="http://hmmer.janelia.org/software">hmmer</a> installed on system
 - ipython/notebook
 - pandas
 - matplotlib
