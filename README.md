@@ -1,4 +1,3 @@
-
 #hmmerclust
 A python package for detecting a gene cluster of interest in a set of bacterial genomes followed by interactive analysis of the results using ipython/jupyter notebook. For example, it could be used for identifying genetic loci that encode biosynthetic pathways or multicomponent protein assemblies, comparing how these loci differ across taxonomical groups, and automatically extracting sequences for subsequent phylogenetic analysis or protein expression.
 
@@ -11,6 +10,7 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - matplotlib
 - biopython
 <hr>
+
 
 ####Input files
 - Genbank genome sequence files 
@@ -33,7 +33,7 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - Locus maps w/ tables that describe the hits.
 - Functions for extracting entire loci or sets of annotated proteins for doing multiple sequence alignments or phylogenetic analysis in a separate program.
 
-#Installation
+##Installation
 
 ####Make a virtual envelope
 (see https://virtualenv.pypa.io/en/latest/)
@@ -47,7 +47,7 @@ $ workon hmmerclust
 $ pip install ipython[all] matplotlib pandas biopython hmmerclust
 $ ipython notebook
 ```
-#Setting up the files
+##Setting up the files
 ####3 key things
 - Alignment folder
 - Genome folder
@@ -111,7 +111,7 @@ HEATMAP_ABBREVIATIONS = ['E', 'C', 'P', 'Q', 'S', 'A', 'O', 'B', 'A', 'K', 'H', 
 
 <hr>
 
-#Make the database
+##Make the database
 
 ```python
 from hmmerclust import hmmerclust
@@ -131,7 +131,7 @@ After you do this once, a fasta will be generated. If you already have the fresh
 
 <hr>
 
-#Do the search
+##Do the search
 
 ```python
     #specificy the location of the fasta 
@@ -174,11 +174,64 @@ Hits are added to the organisms in the db object.
 ####Can see the organisms in the database model now have protein objects
 
 
-#Find loci
+##Finding loci
+Let's find loci with minimum of 5 of the search proteins within a 15k bp of each other
+```python
+db.find_loci(5, 15000)
+```
+```
+total of 2 found for Pyrococcus abyssi GE5
+finding loci for Haemophilus influenzae Rd KW20
+total of 1 found for Haemophilus influenzae Rd KW20
+finding loci for Mycoplasma genitalium G37
+total of 1 found for Mycoplasma genitalium G37
+finding loci for Methanocaldococcus jannaschii DSM 2661
+total of 1 found for Methanocaldococcus jannaschii DSM 2661
+finding loci for Synechocystis sp. PCC 6803
+total of 0 found for Synechocystis sp. PCC 6803
+etc...
+```
+
+##Make a pandas dataframe:
+
+```python
+df = hmmerclust.FinalDataFrame(db)
+```
+
+now each entry is a hit. For e.g., index the first row
+
+```python
+df.df.ix[0]
+```
+
+```
+org_name                               Chlamydia trachomatis D/UW-3/CX
+org_acc                                                      NC_000117
+org_phylum                                                  Chlamydiae
+org_class                                                 Chlamydiales
+org_order                                                Chlamydiaceae
+org_family                               Chlamydia/Chlamydophila group
+org_genus                                                    Chlamydia
+org_species                                      Chlamydia trachomatis
+org_tree_order                                                       0
+org_genome_length                                              1042519
+org_prot_count                                                      98
+org_numb_loci                                                        5
+prot_acc                                                   NP_220236.1
+prot_gi                                                       15605450
+prot_product                    type III secretion system ATP synthase
+prot_translation     MTHLQEETLLIHQWRPYRECGILSRISGSLLEAQGLSACLGELCQI...
+prot_numb_of_res                                                   434
+hit_query                                                         InvC
+hit_evalue                                                     1.7e-51
+hit_bitscore                                                     182.9
+hit_bias                                                           0.1
+locus_id             <hmmerclust.hmmerclust.Locus instance at 0x1af...
+Name: 0, dtype: object
+```
 
 
-    #args are minimum number of copies located within how many basepairs
-    db.find_loci(5, 15000)
 
 
-    
+
+
