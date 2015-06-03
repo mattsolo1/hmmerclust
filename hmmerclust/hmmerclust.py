@@ -12,6 +12,9 @@ import os
 
 processors = cpu_count()
 
+def test():
+    print 'test'
+
 
 class OrganismDB:
     
@@ -967,11 +970,11 @@ class FinalDataFrame:
 
 class HeatMap:
 
-    def __init__(self, DataFrame, by_locus=False, cols=None, subset=None):
+    def __init__(self, DataFrame, by_locus=False, cols=None, subset=None, singleletters=None):
 
         self.unstacked_df = self.unstack_df(DataFrame, by_locus, cols, subset)
 
-        self.heatmap = self.make_heatmap(self.unstacked_df)
+        self.heatmap = self.make_heatmap(self.unstacked_df, singleletters)
 
     def unstack_df(self, DataFrame, by_locus, cols, subset):
 
@@ -994,7 +997,7 @@ class HeatMap:
         return unstacked_df
 
 
-    def make_heatmap(self, unstacked_df):
+    def make_heatmap(self, unstacked_df, singleletters):
 
         fig, ax = plt.subplots(num=None, figsize=(10,len(unstacked_df)/3), dpi=80, facecolor='w', edgecolor='k')
 
@@ -1025,6 +1028,16 @@ class HeatMap:
 
         plt.grid(True, color='black', ls='-', linewidth=0.5)
 
+        '''exerimental: displaying text on the heatmap'''
+
+        if singleletters != None:
+
+            for y in range(unstacked_df.values.shape[0]):
+                for x in range(unstacked_df.values.shape[1]):
+                    plt.text(x + 0.5, y + 0.5, '%.4s' % singleletters[(x)],
+                             horizontalalignment='center',
+                             verticalalignment='center',
+                             )  
         plt.show()
 
         #print species_names_only
