@@ -11,6 +11,9 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - biopython
 <hr>
 
+####User
+- Basic python
+- How to use the <a href="http://pandas.pydata.org/">pandas data analysis library</a>
 
 ####Input files
 - Genbank genome sequence files 
