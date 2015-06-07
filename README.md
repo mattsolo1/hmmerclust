@@ -246,4 +246,14 @@ InvG_only = hmmerclust.HeatMap(df.df,
 
 <img src="/figs/eg_loci.png">
 
+##Generate a map of the locus
+Any locus object can be visualized using hmmerclust.ViewLocus(locus). For example, we can generate a map of one of the loci from the InvG heatmap like so:
+
+```python
+hmmerclust.ViewLocus(InvG_only.unstacked_df.reset_index().locus_id[0])
+```
+
+<img src="/figs/eg_map.png">
+
+
 
