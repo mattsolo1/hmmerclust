@@ -257,11 +257,22 @@ class OrganismDB:
         for org in self.organisms:
             org.loci=None
 
-class Organism:
+class Organism(object):
     
     """
-    Recieve a seq_record object, generate a simpler object
-    that has attributes about the genome we care about
+    Encapsulates data related to a single organism.
+
+    Args:
+        seq_record (SeqRecord): biopython seqrecord object
+        genome_path (str): The path to genome 
+        OrganismDB (OrganismDB): the parent organism database
+
+    Attributes:
+        genome_path (str)
+        parent_db (OrganismDB)
+        
+
+
     """
     
     def __init__(self, seq_record, genome_path, OrganismDB):
@@ -984,12 +995,13 @@ class HeatMap:
             colheads = ['org_species', 'org_tree_order', 'hit_query']
 
 
-        unstacked_df = (DataFrame.groupby(colheads)
-                        .size()
-                        .unstack()
-                        #.dropna(subset=subset)
-                        .fillna(0)
-                        .sortlevel('org_tree_order', ascending=False))
+        unstacked_df = DataFrame.groupby(colheads).size().unstack()
+
+        if subset != None:
+            unstacked_df = unstacked_df.dropna(subset=subset)
+
+        unstacked_df = unstacked_df.fillna(0).sortlevel('org_tree_order', ascending=False)
+
 
         if cols != None:
             unstacked_df=unstacked_df[cols]
@@ -1038,6 +1050,7 @@ class HeatMap:
                              horizontalalignment='center',
                              verticalalignment='center',
                              )  
+        plt.savefig("out.svg")
         plt.show()
 
         #print species_names_only
