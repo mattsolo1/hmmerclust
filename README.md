@@ -14,7 +14,7 @@ Please see the <a href="https://github.com/mattsolo1/hmmerclust/tree/master/demo
 <hr>
 
 ####User knowledge
-- Basic python
+- Python
 - How to use the <a href="http://pandas.pydata.org/">pandas data analysis library</a>
 
 ####Input files
@@ -41,9 +41,10 @@ Please see the <a href="https://github.com/mattsolo1/hmmerclust/tree/master/demo
 ##Installation
 
 ####Make a virtual envelope
-(see https://virtualenv.pypa.io/en/latest/)
+First, install <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> and <a href="https://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>.
+
+Then make a virtualenv for hmmerclust:
 ```
-$ brew install virtualenv
 $ mkvirtualenv -p /usr/bin/python hmmerclust
 $ workon hmmerclust
 ```
@@ -57,18 +58,21 @@ $ ipython notebook
 - Alignment folder
 - Genome folder
 - settings.py file
+- 16S_aligned.csv (for sorting results by phylogentic tree. Just make an empty file to start)
 
+Before starting the search, the directory should like something like that
 ```
-$ !ls
+$ ls
 
 alignments/             
 example_notebook.ipynb
 genomes/
 settings.py
+16S_aligned.csv
 ```
-
+The ```alignments/``` folder should look like this:
 ```
-$ !ls alignments/
+$ ls alignments/
 
 FlgH_PF02107_seed.txt  InvG_PF00263_seed.txt  OrgB_PB004806.txt      
 PrgK_PF01514_seed.txt  SpaO_PF01052_seed.txt  SpaS_PF01312_seed.txt
@@ -79,23 +83,44 @@ SpaQ_PF01313_seed.txt  InvE_PF07201_seed.txt  OrgA_PF09482_seed.txt
 PrgJ_PB000379.txt      SipD_PF06511_seed.txt  SpaR_PF01311_seed.txt
 ```
 
-Here are the alignment files. In this case, I queried PFAM for the proteins located in my gene cluster of interest (here, the type III secretion system). It is important to name the files starting with how you want to the search results to be annotated later, followed by an underscore. It doesn't matter what goes after the underscore.
+In this case, I queried PFAM for the proteins located in my gene cluster of interest (here, the type III secretion system) and downloaded the hmm seed alignments. It is important to name the files starting with how you want to the search results to be annotated later, followed by an underscore. It doesn't matter what goes after the underscore.
 
+Now, set up the genomes to query. You can use the fetch_gbwithparts() function to download genomes from NCBI.
+
+```python
+accessions_of_interest = ['NC_002516',
+ 'NC_002695',
+ 'NC_003143',
+ 'NC_003198',
+ 'NC_007645',
+ 'NC_007650',
+ 'NC_007651',
+ 'NC_007760',
+ 'NC_010287',
+ 'NC_013722',
+ 'NC_013971',
+ 'NC_015677',
+ 'NC_018518',
+ 'NC_022904']
+ 
+hmmerclust.fetch_gbwithparts(accessions_of_interest, 'your@email.com', './genomes/')
+ 
+downloading genomes... please wait
+done downloading NC_002516
+done downloading NC_002695
+done downloading NC_003143
+done downloading NC_003198
+done downloading NC_007645
 ```
-$ !ls genomes/
 
-NC_000117.gb  NC_000907.gb  NC_000912.gb  NC_000918.gb  
-NC_000962.gb  NC_001264.gb  NC_002488.gb  NC_002528.gb      
-NC_002662.gb  NC_000853.gb  NC_000908.gb  NC_000915.gb  
-NC_000919.gb  NC_000963.gb  NC_001318.gb  NC_002505.gb  
-NC_002570.gb  NC_000854.gb  NC_000909.gb  NC_000916.gb  
-NC_000922.gb  NC_000964.gb  NC_002162.gb  NC_002506.gb  
-NC_002607.gb  NC_000868.gb  NC_000911.gb  NC_000917.gb  
-NC_000961.gb  NC_001263.gb  NC_002163.gb  NC_002516.gb  
-NC_002620.gb
+```$ !ls genomes/```
+```
+NC_002516.gb  NC_003198.gb  NC_007651.gb  NC_013722.gb  NC_018518.gb
+NC_002695.gb  NC_007645.gb  NC_007760.gb  NC_013971.gb  NC_022904.gb
+NC_003143.gb  NC_007650.gb  NC_010287.gb  NC_015677.gb
 ```
 
-These are all RefSeq genbank files downloaded from NCBI. In an actual search I would use all the genomes from RefSeq. (~ 1500 chromosomes)
+In an actual search I might use all the genomes from RefSeq. See a list <a href="http://www.ncbi.nlm.nih.gov/genome/browse/reference/">here</a>
 
 In the settings file there are definitions for how results will be displayed later in some of the scripts.
 The `COLOUR_DICT` variable indicates how ORFs will be coloured in the locus maps. 
@@ -103,9 +128,9 @@ The `HEATMAP_COLUMNS` variable are how proteins are ordered in the heatmap scrip
 the `HEATMAP_ABBREVIATIONS` variable are 1 letter codes for proteins that should reflect the same order as the columns.
 If these are not defined, the will be generated automatically.
 
-$ !cat settings.py
+```$ !cat settings.py```
 
-```
+```python
 COLOUR_DICT = {'InvE' : 'green', 'InvC' : 'blue'... etc}
 
 HEATMAP_COLUMNS = ['InvE','InvC','SpaP','SpaQ','SpaS','InvA','SpaO','OrgB','OrgA','PrgK','PrgH','InvG',
@@ -132,20 +157,39 @@ db = hmmerclust.OrganismDB('t3ss_database'
 ```
 After you do this once, a fasta will be generated. If you already have the freshfasta=False, next time you make a database. The fasta can be very large; don't want to always generate this and have multiple copies on your system.
 
-####Resultant db object structured like this:
+####Resultant db object
+Structured so that data encapsulated in Organism objects
+```python
+for org in db.organisms:
+    print org.name
+```
+```
+Pseudomonas aeruginosa PAO1
+Escherichia coli O157:H7 str. Sakai
+Yersinia pestis CO92
+Salmonella enterica subsp. enterica serovar Typhi str. CT18
+Hahella chejuensis KCTC 2396
+Burkholderia thailandensis E264
+Burkholderia thailandensis E264
+Anaeromyxobacter dehalogenans 2CP-C
+Chlamydia trachomatis 434/Bu
+Xanthomonas albilineans GPE PC73
+Erwinia amylovora ATCC 49946
+Ramlibacter tataouinensis TTB310
+Bordetella pertussis 18323
+Pandoraea pnomenusa 3kgm
+```
 
 <hr>
 
 ##Do the search
 
 ```python
-    #specificy the location of the fasta 
-    
-    combined_fasta = './combined_fasta'
-    s = hmmerclust.HmmSearch(db, combined_fasta, 
-                             freshbuild=True,
-                             freshsearch=True,
-                            aln_extension='.txt')
+combined_fasta = './combined_fasta'
+s = hmmerclust.HmmSearch(db, combined_fasta, 
+                     freshbuild=True,
+                     freshsearch=True,
+                    aln_extension='.txt')
 ```
 Specify the location of the combined fasta generated from the previous step and if the alignments files have an extension.
 
@@ -176,11 +220,30 @@ extracted 1845 hits for InvG.out
 Hits are added to the organisms in the db object.
 
 
-####Can see the organisms in the database model now have protein objects
+####The organisms in the database model now have protein objects
 
+```python
+print db.organisms[1].proteins
+
+NP_310807.1 - hypothetical protein,
+NP_312703.1 - ATP synthase F0F1 subunit alpha,
+NP_312230.1 - ABC transporter ATP-binding protein,
+NP_311368.2 - glycine cleavage system transcriptional repressor,
+NP_313267.1 - hypothetical protein,
+NP_312611.1 - hypothetical protein,
+NP_309773.1 - oligopeptide ABC transporter ATP-binding protein,
+NP_309779.1 - transporter,
+NP_312226.1 - hypothetical protein,
+NP_311745.1 - EprI,
+NP_311753.1 - surface presentation of antigens protein SpaO,
+NP_312260.1 - outer membrane porin HofQ,
+NP_311743.1 - EprK,
+NP_311757.1 - ATP synthase SpaL,
+NP_311751.1 - EpaQ,
+```
 
 ##Finding loci
-Let's find loci with minimum of 5 of the search proteins within a 15k bp of each other
+Now that the hits have been associated with each organism, they can be clustered into loci based on their proximity in the genome. Here, we search for loci with minimum of 5 of the search proteins within a 15k bp of each other.
 ```python
 db.find_loci(5, 15000)
 ```
@@ -198,6 +261,7 @@ etc...
 ```
 
 ##Make a pandas dataframe:
+Use the power of pandas to make sense of the results from a phylogenetic perspective, or filter the results based on the hmmer statistics.
 
 ```python
 df = hmmerclust.FinalDataFrame(db)
@@ -235,8 +299,28 @@ locus_id             <hmmerclust.hmmerclust.Locus instance at 0x1af...
 Name: 0, dtype: object
 ```
 
+Notice the `locus_id` has a Locus object, which holds information about the locus membership & location.
+
+We can use pandas to do things like see how many loci are present in each family.
+```python
+# number of loci identified by family
+
+figsize(5,5)
+df.df.groupby(['org_family'])['locus_id'].nunique().plot(kind='bar')
+```
+<img src="/figs/locus_family.png">
+
+...or check stats like evalue for an individual protein
+
+```python
+figsize(15,5)
+df.df[df.df.hit_query=='InvG'].hit_evalue.order().plot(logy=True, kind='bar')
+```
+
+<img src="/figs/evalue.png">
+
 ##Visualize identified proteins in multiple loci and species
-Plug in the pandas dataframe. If ```by_locus=True```, hits shown as loci. If false, it doesn't matter where in the genome. To order the columns in a set order, enter a list (I have this in the settings.py file). To have single letter abbreviations show up on the heatmap, set this will. To only show loci that must contain a certain protein, use the subset=[] arg. 
+Plug in the pandas dataframe. If `by_locus=True`, hits shown as loci. If false, it doesn't matter where the hit is found in the genome. To order the columns in a set order, enter a list (I have this in the settings.py file). To have single letter abbreviations show up on the heatmap, set this will. To only show loci that must contain a certain protein, use the subset=[] arg. 
 
 ```python
 InvG_only = hmmerclust.HeatMap(df.df,
