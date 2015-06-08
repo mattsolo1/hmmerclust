@@ -1,6 +1,8 @@
 #hmmerclust
 A python package for detecting a gene cluster of interest in a set of bacterial genomes followed by interactive analysis of the results using ipython/jupyter notebook. For example, it could be used for identifying genetic loci that encode biosynthetic pathways or multicomponent protein assemblies, comparing how these loci differ across taxonomical groups, and automatically extracting sequences for subsequent phylogenetic analysis or protein expression.
 
+Please see the <a href="https://github.com/mattsolo1/hmmerclust/tree/master/demo"><b>demo folder</b></a>, which contains <a href="https://github.com/mattsolo1/hmmerclust/blob/master/demo/hmmerclust_demo.ipynb"><b>an executable notebook demonstrating the functionality</b></a>.
+
 ####Requirements
 - python2.7/pip
 - virtualenv
@@ -11,7 +13,7 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - biopython
 <hr>
 
-####User
+####User knowledge
 - Basic python
 - How to use the <a href="http://pandas.pydata.org/">pandas data analysis library</a>
 
@@ -19,7 +21,6 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - Genbank genome sequence files 
 - A folder with a set of multiple sequence alignments representing proteins of interest
 - a settings file for defining colors, tables, and abbreviations
-- Please see the <b>demo</b> folder, which contains <a href="https://github.com/mattsolo1/hmmerclust/blob/master/demo/hmmerclust_demo.ipynb">an executable notebook demonstrating the whole process</a>.
 <hr>
 
 ####How it works
