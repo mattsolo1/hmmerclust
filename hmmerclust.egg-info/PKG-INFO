@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: hmmerclust
-Version: 0.0.1.dev3
+Version: 0.0.1.dev4
 Summary: Detection and analysis of gene clusters in bacterial genomes.
 Home-page: https://github.com/mattsolo1/hmmerclust
 Author: Mathew Solomonson

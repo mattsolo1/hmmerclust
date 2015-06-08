@@ -1,6 +1,8 @@
 README.rst
 setup.cfg
 setup.py
+demo/__init__.py
+demo/settings.py
 example/__init__.py
 example/settings.py
 hmmerclust/__init__.py
