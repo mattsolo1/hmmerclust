@@ -235,8 +235,8 @@ locus_id             <hmmerclust.hmmerclust.Locus instance at 0x1af...
 Name: 0, dtype: object
 ```
 
-##Simultaneously visualize identified proteins in many loci at once
-Plug in the pandas dataframe. If by_locus=True, hits shown as loci. If false, it doesn't matter where in the genome. To order the columns in a set order, enter a list (i have this in the settings.py file). To have single letter abbreviations show up on the heatmap, set this will. To only show loci that must contain a certain protein, use the subset=[] arg. 
+##Visualize identified proteins in multiple loci and species
+Plug in the pandas dataframe. If ```by_locus=True```, hits shown as loci. If false, it doesn't matter where in the genome. To order the columns in a set order, enter a list (I have this in the settings.py file). To have single letter abbreviations show up on the heatmap, set this will. To only show loci that must contain a certain protein, use the subset=[] arg. 
 
 ```python
 InvG_only = hmmerclust.HeatMap(df.df,
