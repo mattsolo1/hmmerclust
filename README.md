@@ -255,5 +255,6 @@ hmmerclust.ViewLocus(InvG_only.unstacked_df.reset_index().locus_id[0])
 
 <img src="/figs/eg_map.png">
 
+test
 
 
