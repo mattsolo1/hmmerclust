@@ -1,2 +1,8 @@
 make_readme/
 example/
+demo/genomes
+demo/group_fastas
+demo/hhsearch_results
+demo/hmm
+demo/locus_fastas
+demo/combined_fasta

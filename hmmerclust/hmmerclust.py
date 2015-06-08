@@ -1,3 +1,27 @@
+'''
+The MIT License (MIT)
+
+Copyright (c) 2015 Matthew Solomonson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+'''
+
 from Bio import SeqIO, SearchIO
 import subprocess
 from multiprocessing import cpu_count
@@ -12,8 +36,30 @@ import os
 
 processors = cpu_count()
 
-def test():
-    print 'test'
+
+def fetch_gbwithparts(list_of_NC_accessions, email, folder):
+    from Bio import Entrez
+    from time import sleep
+
+    print 'downloading genomes... please wait'
+
+    for item in list_of_NC_accessions:
+        Entrez.email = email
+        handle = Entrez.efetch(db="nuccore",
+                               id=item,
+                               retmode='full',
+                               rettype='gbwithparts')
+        data = handle.read()
+
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+
+        with open('%s/%s.gb' % (folder,item), 'w') as textfile:
+            textfile.write(data)
+
+        print 'done downloading %s' % item
+        
+        sleep(2)
 
 
 class OrganismDB:
@@ -1147,6 +1193,8 @@ class RelatedProteinGroup:
             write_fasta = open(filename, 'w')
             write_fasta.write(faastring)
             write_fasta.close()
+
+
 
 '''
 def make_16S(OrganismDB):
