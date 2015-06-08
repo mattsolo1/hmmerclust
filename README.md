@@ -320,7 +320,7 @@ df.df[df.df.hit_query=='InvG'].hit_evalue.order().plot(logy=True, kind='bar')
 
 <img src="/figs/evalue.png">
 
-##Visualize identified proteins in multiple loci and species
+##Visualize identified proteins across loci and species
 Plug in the pandas dataframe. If `by_locus=True`, hits shown as loci. If false, it doesn't matter where the hit is found in the genome. To order the columns in a set order, enter a list (I have this in the settings.py file). To have single letter abbreviations show up on the heatmap, set this will. To only show loci that must contain a certain protein, use the subset=[] arg. 
 
 ```python
@@ -333,6 +333,17 @@ InvG_only = hmmerclust.HeatMap(df.df,
 
 <img src="/figs/eg_loci.png">
 
+
+In contrast, if we set `by_locus=False`, the rows are no longer by locus, rather a hit can be anywhere in the genome. In this case we see a lot of InvC hits not associated with loci. These are probably ATPase homologues from other systems and not relevant to our system of interest.
+```python
+hmmerclust.HeatMap(df.df,
+                  by_locus=False,
+                  cols=settings.HEATMAP_COLUMNS,
+                  singleletters=settings.HEATMAP_ABBREVIATIONS)
+```
+
+<img src="/figs/hm_noloci.png">
+
 ##Generate a map of the locus
 Any locus object can be visualized using hmmerclust.ViewLocus(locus). For example, we can generate a map of one of the loci from the InvG heatmap like so:
 
@@ -341,3 +352,26 @@ hmmerclust.ViewLocus(InvG_only.unstacked_df.reset_index().locus_id[0])
 ```
 
 <img src="/figs/eg_map.png">
+
+##Filter results & export sequences:
+
+Finally, sequences can be exported for multiple sequence alignments, etc. Use pandas to define the criteria for the exported sequences ... e.g. here we export sequences that belong to a locus that must include the protein InvG with e-value less than 0.01.
+```python
+invg_loci = list(InvG_only.unstacked_df.reset_index().locus_id)
+invg_only_df = df.df[df.df['locus_id'].isin(invg_loci)]
+evalue_cut = invg_only_df[invg_only_df.hit_evalue < 0.01]
+hmmerclust.RelatedProteinGroup(evalue_cut)
+```
+A new directory with the fastas is created:
+```
+$ ls group_fastas/
+
+InvA.fasta InvG.fasta OrgA.fasta PrgI.fasta PscP.fasta SipD.fasta SpaQ.fasta
+InvC.fasta InvH.fasta OrgB.fasta PrgJ.fasta SipB.fasta SpaO.fasta SpaR.fasta
+InvE.fasta InvJ.fasta PrgH.fasta PrgK.fasta SipC.fasta SpaP.fasta SpaS.fasta
+
+
+
+
+
+
