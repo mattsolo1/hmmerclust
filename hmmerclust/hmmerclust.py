@@ -38,6 +38,15 @@ processors = cpu_count()
 
 
 def fetch_gbwithparts(list_of_NC_accessions, email, folder):
+
+    '''Download genbank files from NCBI using Biopython Entrez efetch.
+
+    Args:
+        list_of_NC_accessions (list): a list of strings, e.g ['NC_015758', 'NC_002695']
+        email (string):  NCBI wants your email
+        folder (string): Where the gb files download to, generally './genomes/'
+    '''
+
     from Bio import Entrez
     from time import sleep
 
@@ -62,34 +71,52 @@ def fetch_gbwithparts(list_of_NC_accessions, email, folder):
         sleep(2)
 
 
-class OrganismDB:
+class OrganismDB(object):
     
-    """ 
-    Recieves a list of genomes,
-    Makes a list of seqRecord objects,
-    Generates a list of Organism objects.
+    """The database object of hmmerclust.
+
+    On initialization, takes a list of genbank accessions and the directory
+    in which they are stored, generates a list of Organisms, and creates a 
+    combined_fasta text file which is later queried by HMMER.
+
+    Args
+        database_name (string): e.g. 'my_database'
+        genome_list (list): ['NC_015758.gb', 'NC_002695.gb']
+        genome_dir (string): path to genome location
+        freshfasta (bool): decide if a new combined_fasta file needs to be made
+
+    Attributes
+        database_name (string): see 
+        genome_list (list)
+        genome_dir (string)
+        organisms (list): List of organism objects populated by the
+            make_organisms() function
+        df (DataFrame): why do we need this again?
+        rRNA16SDB (rRNA16SDB): an rRNA database object
     
     """
     
-    def __init__(self, database_name, genome_list, genome_dir, freshfasta=False, search=None):
+    def __init__(self, database_name, genome_list, genome_dir, freshfasta=False):
 
         self.database_name = database_name
         self.genome_list = genome_list
         self.genome_dir = genome_dir
-        self.combined_proteome_file_name = None
 
         if freshfasta==True:
             self.generate_combined_fasta(self.genome_list, self.genome_dir)
 
-        self.organisms = [] #self.make_organisms(self.seq_record_list)
-        #self.seq_record_list = self.make_seq_record(self.genome_list, self.genome_dir)
-        self.search = search
+        self.organisms = []
         self.df = None
-        self.group_dict = None
         self.make_organisms(self.genome_list, self.genome_dir)
         self.rRNA16SDB = rRNA16SDB(self)
 
     def generate_combined_fasta(self, genome_list, genome_dir):
+        '''Generate a combined fasta using the genbank files.
+        
+            Args
+                genome_list (list)
+                genome_dir (string)
+        '''
 
         fasta = []
             
@@ -145,6 +172,16 @@ class OrganismDB:
 
     def make_organisms(self, genome_list, genome_dir): 
 
+        '''Organism factory method.
+
+        Appends organisms to the organisms list.
+
+        Args
+            genome_list (list)
+            genome_dir (string)
+
+            '''
+
         for genome in genome_list:
 
             genome_path = genome_dir + genome
@@ -172,9 +209,15 @@ class OrganismDB:
     def add_protein_to_organisms(self, orgprot_list):
 
         '''
-        Takes a list of items in org_acc, prot_acc,
-        e.g. NC_015758,YP_004723756.1,
-        adds to the
+        Protein factory method.
+
+        Iterates through a list of SearchIO hit objects, matches
+        the accession against SeqRecord features for each organism.
+        If there is a match, the new Protein object is created and
+        stored in the protein list of that Organism.
+
+        Args
+            orgprot_list: a list Biopython SearchIO hit objects (I think).
 
         '''
 
@@ -217,6 +260,8 @@ class OrganismDB:
 
     def add_hits_to_proteins(self, hmm_hit_list):
 
+        '''Add HMMER results to Protein objects'''
+
         for org in self.organisms:
             print "adding SearchIO hit objects for", org.accession
 
@@ -230,7 +275,15 @@ class OrganismDB:
                             prot.hmm_hit_list.append(hit)
 
 
-    def cluster_number(self, data, maxgap):    
+    def cluster_number(self, data, maxgap): 
+        '''General function that clusters numbers.
+
+        Args
+            data (list): list of integers.
+            maxgap (int): max gap between numbers in the cluster.
+
+        '''
+
         data.sort()
         groups = [[data[0]]]
         for x in data[1:]:
@@ -240,16 +293,18 @@ class OrganismDB:
                 groups.append([x])
         return groups
 
-    def find_loci(self, cluster_size, maxgap, locusview=False, colordict=None, required=None):
+    def find_loci(self, cluster_size, maxgap, locusview=False, colordict=None):
         
         '''
-        Pass the minimum number of locus members, the maximum basepair
-        gap between members.
+        Finds the loci of a given cluster size & maximum gap between cluster members.
 
-        kwargs:
-        locusview: whether or not a map is generated for the locus_parent_organism
-        colordict: pass a pre-made color scheme for identified proteins
-        required: a list of hits the locus must
+        Args
+            cluster_size (int): minimum number of genes in the cluster.
+            maxgap (int): max basepair gap between genes in the cluster.
+
+        Kwargs
+            locusview (bool): whether or not a map is generated for the locus_parent_organism
+            colordict (list): pass a pre-made color scheme for identified proteins
 
         '''
 
@@ -300,6 +355,9 @@ class OrganismDB:
             print 'total of', str(len(organism.loci)), 'found for', organism.name
 
     def clear_loci():
+
+        '''reset loci in the database.'''
+
         for org in self.organisms:
             org.loci=None
 
@@ -309,16 +367,18 @@ class Organism(object):
     Encapsulates data related to a single organism.
 
     Args:
-        seq_record (SeqRecord): biopython seqrecord object
+        seq_record (SeqRecord): Biopython SeqRecord object
         genome_path (str): The path to genome 
         OrganismDB (OrganismDB): the parent organism database
 
     Attributes:
-        genome_path (str)
-        parent_db (OrganismDB)
-        
-
-
+        genome_path (str).
+        parent_db (OrganismDB).
+        various attributes related to the organism.
+        tree order (int): the position of organism sorted by a phylo tree.
+        proteins (list): list of Protein objects associated with the Organism.
+        loci (list): list of Locus objects associated with the Organism.
+    
     """
     
     def __init__(self, seq_record, genome_path, OrganismDB):
@@ -354,50 +414,26 @@ class Organism(object):
         self.proteins = []
 
         self.genome_length = len(seq_record.seq)
-        #self.proteome = Proteome(hit_features_only)
-        #self.seq_record = seq_record
-        self.loci = []  # list of Locus objects
+        self.loci = [] 
 
-class Proteome:
+
+class Protein(object):
     
-    '''
-    Takes a seq_record_features object
+    """Encapsulates data related to a single protein/gene.
 
-    An object representing all the proteins from an Organism.
-    Has Protein objects.
-    
-    Can generate a FASTA that can be queried by hmmsearch
+    Args
+        feature(SeqIO feature object)
 
-    A Proteome belongs to an Organism
-    '''
-    
-    def __init__(self, seq_record_features):
-        
-        #self.seq_record_features = seq_record_features
-        self.proteins = []
-        self.protein_count = len(self.proteins)
-        self.generate_proteome(seq_record_features)
-        
-    def generate_proteome(self, seq_record_features):
-        for feature in seq_record_features:
-            if feature.type == 'CDS':
-                self.proteins.append(Protein(feature))
-
-class Protein:
-    
-    """
-    Takes a SeqIO feature object
-
-    An object representing an indiviudual CDS from the Organism
-    
-    With the data we care about
-
+    Attributes
+        accession info
+        genome location info
+        hmm_hit_list (list): Complete list of SearchIO hit objects.
+        data related to the best-scoring hit
+        is_in_locus (list): locus the protein/gene belongs to.
     """
     
     def __init__(self, feature):    
 
-
-        #self.seqrecord_feature = feature
         self.accession = feature.qualifiers['protein_id'][0]
         self.gi = feature.qualifiers['db_xref'][0].split(':')[1]
         self.product = feature.qualifiers['product'][0]
