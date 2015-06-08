@@ -19,7 +19,7 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - Genbank genome sequence files 
 - A folder with a set of multiple sequence alignments representing proteins of interest
 - a settings file for defining colors, tables, and abbreviations
-- Please see the <b>demo</b> folder, which contains an executable notebook demonstrating the whole process.
+- Please see the <b>demo</b> folder, which contains <a href="https://github.com/mattsolo1/hmmerclust/blob/master/demo/hmmerclust_demo.ipynb">an executable notebook demonstrating the whole process</a>.
 <hr>
 
 ####How it works
