@@ -19,6 +19,7 @@ A python package for detecting a gene cluster of interest in a set of bacterial 
 - Genbank genome sequence files 
 - A folder with a set of multiple sequence alignments representing proteins of interest
 - a settings file for defining colors, tables, and abbreviations
+- Please see the <b>demo</b> folder, which contains an executable notebook demonstrating the whole process.
 <hr>
 
 ####How it works
@@ -254,7 +255,3 @@ hmmerclust.ViewLocus(InvG_only.unstacked_df.reset_index().locus_id[0])
 ```
 
 <img src="/figs/eg_map.png">
-
-test
-
-
