@@ -8,3 +8,4 @@ demo/locus_fastas
 demo/combined_fasta
 demo/out.svg
 scripts/
+*.pyc
