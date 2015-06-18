@@ -491,8 +491,19 @@ class Protein(object):
         return df
 
 class rRNA16SDB:
+
     '''
-    Keep track of all the 16S rRNA.
+    Read and write file related to 16S rRNA sequences.
+
+    Has functions for extracting 16S sequences from SeqRecord object and then
+    writing this to a fasta. This could be used for generating a phylogenetic tree.
+    One current issue with this implementation - not all organisms have the 
+    feature type = '16S ribosomal'. May have to use hmmer to find the 16S seq.
+    Once a phylogenetic tree is generated, you can order things like a heatmap by
+    the organism's position in the phylogenetic tree. This is done through the
+    import_tree_order_from_file() function, which reads a file that contains a 
+    list of accession numbers. 
+
     '''
 
     def __init__(self, OrganismDB, filename, generate_16S_fasta, use_16S_order):
@@ -507,7 +518,7 @@ class rRNA16SDB:
 
     def write_16S_rRNA_for_loci(self):
         '''
-        Write 16S fasta only if organism has loci.
+        Write 16S fasta only if organism has loci. This can speed things up.
         '''
         
         organisms_with_loci = [org for org in self.organismDB.organisms if org.loci]
@@ -584,12 +595,7 @@ class rRNA16SDB:
 class HmmSearch:
     
     """
-    Give alignment files, name them according to what the names
-    should be in the analysis.
-
-    First the hmm is built with Hmmbuild, and the hmm files output.
-
-    Then run Hmmsearch, parse the files, put each result in a list
+    Generates hmm and uses these to search the a fasta, adds results to database.
 
     """
     
