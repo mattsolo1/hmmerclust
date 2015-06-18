@@ -83,7 +83,11 @@ class OrganismDB(object):
         database_name (string): e.g. 'my_database'
         genome_list (list): ['NC_015758.gb', 'NC_002695.gb']
         genome_dir (string): path to genome location
+
+    Kwargs
         freshfasta (bool): decide if a new combined_fasta file needs to be made
+        generate_16S_fasta (bool): output fasta file w/ 16S sequences
+        use_16S_order (bool): use the '16S_aligned.csv' file to determine organism tree order
 
     Attributes
         database_name (string): see 
@@ -96,7 +100,8 @@ class OrganismDB(object):
     
     """
     
-    def __init__(self, database_name, genome_list, genome_dir, freshfasta=False):
+    def __init__(self, database_name, genome_list, genome_dir, freshfasta=False, 
+                 generate_16S_fasta=False, use_16S_order=False):
 
         self.database_name = database_name
         self.genome_list = genome_list
@@ -108,7 +113,9 @@ class OrganismDB(object):
         self.organisms = []
         self.df = None
         self.make_organisms(self.genome_list, self.genome_dir)
-        self.rRNA16SDB = rRNA16SDB(self)
+
+        self.rRNA16SDB = rRNA16SDB(self, '16S-rRNA.fasta',
+                                   generate_16S_fasta, use_16S_order)
 
     def generate_combined_fasta(self, genome_list, genome_dir):
         '''Generate a combined fasta using the genbank files.
@@ -124,7 +131,7 @@ class OrganismDB(object):
             
             full_path = genome_dir + genome
             handle = open(full_path, "rU")
-            print 'making combined fasta for', genome
+            #print 'making combined fasta for', genome
             try:
                 seq_record = SeqIO.read(handle, 'genbank')
                 org_accession = seq_record.name
@@ -156,11 +163,11 @@ class OrganismDB(object):
                           
             handle.close()
             
-            print "%s proteins were added" % len(fasta)
+            #print "%s proteins were added" % len(fasta)
 
             set_fasta = set(fasta)
 
-            print "%s unique proteins were added -- dropping redundant ones" % len(set_fasta)
+            print "Proteins added for %s. Total count: %s" % (genome, len(set_fasta))
                                                 
         faastring = "".join(set_fasta)
 
@@ -484,22 +491,39 @@ class Protein(object):
         return df
 
 class rRNA16SDB:
+    '''
+    Keep track of all the 16S rRNA.
+    '''
 
-    def __init__(self, OrganismDB):
+    def __init__(self, OrganismDB, filename, generate_16S_fasta, use_16S_order):
 
-        #self.write_16S_rRNA_fasta(OrganismDB.organisms)
-        self.import_tree_order_from_file(OrganismDB, '16S_aligned.csv')
+        self.organismDB = OrganismDB
 
+        if generate_16S_fasta==True:
+            self.write_16S_rRNA_fasta(OrganismDB.organisms, filename)
 
-    def write_16S_rRNA_fasta(self, org_list):
+        if use_16S_order==True:
+            self.import_tree_order_from_file(OrganismDB, '16S_aligned.csv')
+
+    def write_16S_rRNA_for_loci(self):
+        '''
+        Write 16S fasta only if organism has loci.
+        '''
+        
+        organisms_with_loci = [org for org in self.organismDB.organisms if org.loci]
+        self.write_16S_rRNA_fasta(organisms_with_loci, '16S-rRNA-loci-only.fasta')
+
+    def write_16S_rRNA_fasta(self, org_list, filename):
 
         '''
         Writes a fasta file containing 16S rRNA sequences
-        for a list of Organism objects,
+        for a list of Organism objects.
 
         The first 16S sequence found in the seq record object is used,
         since it looks like there are duplicates
         '''
+
+        print "writing 16S rRNA fastas"
 
         fasta = []
         for org in org_list:
@@ -530,7 +554,6 @@ class rRNA16SDB:
 
                     
         faastring = "".join(fasta)
-        filename = '16S-rRNA.fasta'
         write_fasta = open(filename, 'w')
         write_fasta.write(faastring)
         write_fasta.close()
@@ -540,13 +563,16 @@ class rRNA16SDB:
 
         '''
         Import the accession list that has been ordered by position
-        in a phylogenetic tree. Get the index in the list, and
+        in a phylogenetic tree. 
+
+        Get the index in the list, and
         add this to the Organism object. Later we can use this position
         to make a heatmap that matches up to a phylogenetic tree.
         '''
-       
-        tree_order = [acc.strip() for acc in open(filename)]
-        #print tree_order
+        
+        print "Adding tree order"
+
+        tree_order = [acc.split(":")[0] for acc in open(filename)]
 
         for org in MyOrganismDB.organisms:
             for tree_accession in tree_order:
