@@ -1,5 +1,5 @@
 alabaster==0.7.4
-Babel==1.3
+Babel==2.9.1
 backports.ssl-match-hostname==3.4.0.2
 biopython==1.65
 certifi==2015.4.28
